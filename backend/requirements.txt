@@ -1,0 +1,8 @@
+psycopg
+python-dotenv
+Django
+djangorestframework
+django-filter
+pillow
+djangorestframework-simplejwt
+django-cors-headers

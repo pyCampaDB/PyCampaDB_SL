@@ -1,0 +1,46 @@
+version: '3.8'
+
+services:
+  db: 
+    image: postgres:latest
+    restart: always
+    container_name: postgresql_container
+    volumes:
+      - ./data/db:/var/lib/postgresql/data
+      - ./backend/init-db:/docker-entrypoint-initdb.d
+    environment:
+      - POSTGRES_DB=pycampadb_sl
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=admin
+    ports:
+      - "5432:5432"
+    networks:
+      - my_network
+
+  backend:
+    build: ./backend
+    container_name: django-tfg
+    command: ["sh", "-c", "python wait_for_postgres.py && python manage.py makemigrations api && python manage.py migrate && python manage.py runserver 0.0.0.0:8000"]
+    volumes:
+      - ./backend:/code
+    ports:
+      - "8000:8000"
+    environment:
+      - POSTGRES_NAME=pycampadb_sl
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=admin
+    networks:
+      - my_network
+    depends_on:
+      - db
+
+  frontend:
+    build: ./myfrontend
+    container_name: vue_tfg
+    ports:
+      - "8080:8080"
+    networks:
+      - my_network
+
+networks:
+  my_network:
