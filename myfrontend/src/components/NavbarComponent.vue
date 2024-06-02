@@ -15,9 +15,7 @@
             <li class="nav-item">
                 <router-link class="nav-link active" aria-current="page" to="/services" style="margin-right: 15px;height: 15px;"> Servicios </router-link>
             </li>
-            <li class="nav-item">
-                <router-link class="nav-link active" aria-current="page" to="/register" v-if="!isAuthenticated" style="margin-right: 15px;height: 15px;"> Registrarse </router-link>
-            </li>
+            
             <li class="nav-item">
                 <router-link class="nav-link active" aria-current="page" to="/assets" v-if="isAuthenticated" style="margin-right: 15px;height: 15px;"> Videos </router-link>
             </li>
@@ -25,7 +23,10 @@
               <router-link class="nav-link active" aria-current="page" to="/sales" v-if="isAuthenticated" style="height: 15px;"> Compras </router-link>
             </li>
             <li class="nav-item">
-              <router-link class="nav-link" to="/about"> Acerca de nosotros  </router-link>
+              <router-link class="nav-link" to="/about" style="margin-right: 15px;height: 15px;"> Acerca de nosotros  </router-link>
+            </li>
+            <li class="nav-item">
+                <router-link class="nav-link active" aria-current="page" to="/register" v-if="!isAuthenticated" style="margin-right: 15px;height: 15px;"> Registrarse </router-link>
             </li>
           </ul>
           <div class="auth-actions" style="margin-right: 10px;">

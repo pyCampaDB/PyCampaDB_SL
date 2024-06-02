@@ -17,7 +17,7 @@
         <div class="col" v-for="product in filteredProducts" :key="product.id">
           <div class="card text-center mx-auto">
             <div class="card-body">
-              <img :src="product.image" class="card-img-top" alt="Imagen de {{ product.product }}" width="50px" height="50px">
+              <img :src="product.image" class="card-img-top" alt="Imagen de {{ product.product }}" >
               <h5 class="card-title">{{product.product}}</h5>
               <h6 class="card-subtitle mb-2 text-body-secondary">{{product.kind}}</h6>
               <p class="card-text">{{product.description}}</p>

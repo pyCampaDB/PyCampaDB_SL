@@ -4,7 +4,7 @@ services:
   db: 
     image: postgres:latest
     restart: always
-    container_name: postgresql_container
+    container_name: postgresql-container
     volumes:
       - ./data/db:/var/lib/postgresql/data
       - ./backend/init-db:/docker-entrypoint-initdb.d
@@ -15,7 +15,7 @@ services:
     ports:
       - "5432:5432"
     networks:
-      - my_network
+      - my-network
 
   backend:
     build: ./backend
@@ -30,17 +30,17 @@ services:
       - POSTGRES_USER=admin
       - POSTGRES_PASSWORD=admin
     networks:
-      - my_network
+      - my-network
     depends_on:
       - db
 
   frontend:
     build: ./myfrontend
-    container_name: vue_tfg
+    container_name: vue-tfg
     ports:
       - "8080:8080"
     networks:
-      - my_network
+      - my-network
 
 networks:
-  my_network:
+  my-network:
